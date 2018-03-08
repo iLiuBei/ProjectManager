@@ -1,0 +1,15 @@
+@charset "UTF-8";
+/*首页的样式*/
+/*任务数*/
+.number{
+	font-size:1.5em;
+	padding-right:0.3em;
+}
+/*任务数数量为0*/
+.number0{
+	color:green;
+}
+/*任务数数量不为0*/
+.number1{
+	color:red;
+}

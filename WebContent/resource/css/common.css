@@ -1,0 +1,87 @@
+@charset "UTF-8";
+/*
+	基础样式
+*/
+*{
+	margin:auto;
+	padding:0;	
+}
+/* 清除浮动 */
+.cf{
+	clear:both;
+}
+
+body{
+	width:1000px;
+	min-height:600px;
+}
+h1{
+	height:50px;
+	line-height:50px;
+	text-align:center;
+}
+#time{
+	float:right;
+	min-width:100px;
+	height:50px;
+	font-size:16px;
+	line-height:50px;
+	margin-right:1em;
+}
+/*
+	菜单区样式
+*/
+.menu_area{
+	padding:auto;
+	background-color:purple;
+	width:1000px;
+	height:50px;
+}
+.menu_list{
+	position:relative;
+	cursor: pointer;
+	width:100px;
+	float:left;
+}
+.menu_list_item{
+	text-align:center;
+	float:left;
+	width:100px;
+	height:50px;
+	line-height:50px;
+	background-color:yellow;
+}
+.menu_list_item2{
+	background-color:orange;
+}
+.menu_list_item:HOVER {
+	background-color:green;
+}
+
+.menu_list:HOVER .menu_list_content{
+	display:block;
+}
+.menu_list_content{
+	display:none;
+	position:absolute;
+	left:0px;
+	top:50px;
+	width:100px;
+}
+.menu_list_item2:HOVER{
+	color:white;
+	background-color:blue;
+}
+/*
+	工作区样式
+*/
+
+#workspace{
+	padding:auto;
+	background-color:#f1f1f1;
+	width:1000px;
+	min-height:600px;
+}
+
+
+
