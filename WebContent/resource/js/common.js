@@ -66,3 +66,8 @@ function startTime() {
 		return i;
 	}
 }
+
+/* 判断是否为空*/
+function isEmpty(){
+	
+}

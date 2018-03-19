@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<!-- 上面的头，注意版本，从样例里复制过来 showcase.war\WEB-INF\src\java\struts.xml -->
+
+<struts>
+	<!-- 告知Struts2运行时使用Spring来创建对象 -->
+	<constant name="struts.objectFactory" value="spring" />
+	<!-- 第1步：先定义一个包 -->
+	<package name="default" namespace="/" extends="struts-default">
+		<!-- 第2步：定义一个action，配置跳转信息 name 类似于Servlet @WebServlet("/IndexServlet") 
+			http://xxxx/xxx/Index.action http://xxxx/xxx/Index class 对应于自己写的Action类 当不写method属性时，默认调用的是execute 
+			class="ssh.action.IndexAction" ** new ssh.action.IndexAction() 设计思想：关心了具体的实现类必须改为不要关注那个实现类 
+			加入spring后，struts的action节点的class属性意义发生变化，直接引用spring帮忙创建的实例 -->
+		<!-- 如果方法能正常访问但404，试试在页面前加个/ -->
+		<action name="index" class="com.project.action.IndexAction">
+			<!-- 跳转是forward/WEB-INF/是防止jsp不经过action就可以访问 -->
+			<!-- result接收返回的字符串，然后做对应的事情 -->
+			<result name="success">Index.jsp</result>
+			<result name="login">Login.jsp</result>
+		</action>
+		<action name="login" class="com.project.action.IndexAction"
+			method="login">
+			<result name="success">Index.jsp</result>
+			<result name="login">Login.jsp</result>
+		</action>
+	</package>
+	<package name="UserAction" namespace="/UserAction" extends="json-default">
+		<!-- 实际上应该为json类型 -->
+		<action name="login" class="com.project.action.UserAction"
+			method="login">
+			<result name="success" type="json">
+				<!-- 这里指定将被Struts2序列化的属性，该属性在action中必须有对应的getter方法 -->
+				<param name="root">result</param>
+				<!-- 指定是否序列化空的属性 -->
+				<param name="excludeNullProperties">true</param>
+				<!-- 这里指定将序列化list中的那些属性 -->
+				<!-- <param name="includeProperties">data.*</param> -->
+				<!-- 这里指定将要从list中排除那些属性，这些排除的属性将不被序列化，一般不与上边的参数配置同时出现 -->
+				<!-- <param name="excludeProperties">id</param> -->
+			</result>
+		</action>
+		<action name="addUser" class="com.project.action.UserAction"
+			method="addUser">
+			<result name="success">/Index.jsp</result>
+		</action>
+	</package>
+
+</struts>
